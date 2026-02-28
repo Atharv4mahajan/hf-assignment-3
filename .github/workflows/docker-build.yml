@@ -17,4 +17,4 @@ jobs:
         run: docker build -t hf-assignment-3 .
 
       - name: Run training inside container
-        run: docker run hf-assignment-3
+        run: docker run -e HF_TOKEN=${{ secrets.HF_TOKEN }} hf-assignment-3

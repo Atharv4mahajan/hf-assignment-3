@@ -4,6 +4,12 @@ import gzip
 import requests
 import os
 from collections import defaultdict
+from huggingface_hub import login
+import os
+# Login to HuggingFace
+hf_token = os.getenv("HF_TOKEN")
+if hf_token:
+    login(token=hf_token)
 
 import torch
 from sklearn.metrics import accuracy_score, classification_report
@@ -208,3 +214,4 @@ print(metrics)
 
 trainer.save_model(cached_model_directory_name)
 print("Model saved successfully!")
+trainer.push_to_hub("hf-assignment-3-distilbert-genres")
