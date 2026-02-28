@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Train Model in Docker
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  train:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,3 +15,6 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t hf-assignment-3 .
+
+      - name: Run training inside container
+        run: docker run hf-assignment-3
